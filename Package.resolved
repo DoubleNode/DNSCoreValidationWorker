@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AtomicSwift",
+        "repositoryURL": "https://github.com/MarioIannotta/AtomicSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "e2913c6e873bc60237dd138ba0db9b109016dd80",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "DNSBlankWorkers",
+        "repositoryURL": "https://github.com/DoubleNode/DNSBlankWorkers.git",
+        "state": {
+          "branch": null,
+          "revision": "2e2bdc2a4562f5cb24660e437edec7bf6888aee5",
+          "version": "1.0.18"
+        }
+      },
+      {
+        "package": "DNSCore",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCore.git",
+        "state": {
+          "branch": null,
+          "revision": "b3ee4810f3564d4eb25ed1a2c11f47893307b162",
+          "version": "1.0.12"
+        }
+      },
+      {
+        "package": "DNSCorePasswordStrengthWorker",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCorePasswordStrengthWorker.git",
+        "state": {
+          "branch": null,
+          "revision": "946e6386daa31ce07f99f664a567741f24264d5a",
+          "version": "1.0.1"
+        }
+      },
+      {
+        "package": "DNSCoreThreading",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCoreThreading.git",
+        "state": {
+          "branch": null,
+          "revision": "66d5e01881d1d822789051fa79332a5e0ffd93b8",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "DNSCrashWorkers",
+        "repositoryURL": "https://github.com/DoubleNode/DNSCrashWorkers.git",
+        "state": {
+          "branch": null,
+          "revision": "290191185a565b8909b4ca3b580282191e133a49",
+          "version": "1.0.6"
+        }
+      },
+      {
+        "package": "DNSDataObjects",
+        "repositoryURL": "https://github.com/DoubleNode/DNSDataObjects.git",
+        "state": {
+          "branch": null,
+          "revision": "01e900904349b1ed9c47ddebf90cb164e93ef9b0",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "DNSProtocols",
+        "repositoryURL": "https://github.com/DoubleNode/DNSProtocols.git",
+        "state": {
+          "branch": null,
+          "revision": "ffa2561f7888ddbf6ba233aa7cb144cfd3445c9d",
+          "version": "1.0.16"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
