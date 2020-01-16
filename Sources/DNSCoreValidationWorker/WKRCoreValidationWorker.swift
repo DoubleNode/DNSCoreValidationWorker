@@ -45,8 +45,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
     override open func doValidatePassword(for password: String,
                                           with progress: PTCLProgressBlock?,
                                           and block: PTCLValidationBlockVoidBoolDNSError?) throws {
-        let strength = self.passwordStrengthWorker.doCheckPasswordStrength(for: password)
-        guard strength >= requiredPasswordStrength else {
+        let strength = try! self.passwordStrengthWorker.doCheckPasswordStrength(for: password)
+        guard strength.rawValue >= requiredPasswordStrength.rawValue else {
             let error = PTCLValidationError.tooWeak(domain: "com.doublenode.\(type(of: self))",
                 file: "\(#file)",
                 line: "\(#line)",
