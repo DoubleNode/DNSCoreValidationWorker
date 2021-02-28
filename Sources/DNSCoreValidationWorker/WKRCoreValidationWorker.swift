@@ -48,10 +48,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                           and block: PTCLValidationBlockVoidBoolDNSError?) throws {
         let strength = try! self.passwordStrengthWorker.doCheckPasswordStrength(for: password)
         guard strength.rawValue >= requiredPasswordStrength.rawValue else {
-            let dnsError = PTCLValidationError.tooWeak(domain: "com.doublenode.\(type(of: self))",
-                                                       file: DNSCore.shortenErrorPath("\(#file)"),
-                                                       line: "\(#line)",
-                                                       method: "\(#function)")
+            let dnsError = PTCLValidationError
+                .tooWeak(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
             block?(false, dnsError)
             return
         }

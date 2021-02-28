@@ -26,15 +26,22 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/DoubleNode/DNSCorePasswordStrengthWorker.git", from: "1.3.0"),
-        .package(url: "https://github.com/DoubleNode/DNSCrashWorkers.git", from: "1.3.0"),
+        .package(url: "https://github.com/DoubleNode/DNSBlankWorkers.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCore.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCorePasswordStrengthWorker.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSCrashWorkers.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSError.git", from: "1.4.0"),
+        .package(url: "https://github.com/DoubleNode/DNSProtocols.git", from: "1.4.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "DNSCoreValidationWorker",
-            dependencies: ["DNSCorePasswordStrengthWorker", "DNSCrashWorkers"]),
+            dependencies: [
+                "DNSBlankWorkers", "DNSCore", "DNSCorePasswordStrengthWorker",
+                "DNSCrashWorkers", "DNSError", "DNSProtocols"
+            ]),
         .testTarget(
             name: "DNSCoreValidationWorkerTests",
             dependencies: ["DNSCoreValidationWorker"]),
