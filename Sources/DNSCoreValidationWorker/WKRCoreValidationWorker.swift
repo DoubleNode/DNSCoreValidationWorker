@@ -23,6 +23,37 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 
     public var passwordStrengthWorker: PTCLPasswordStrength_Protocol = WKRCrashPasswordStrengthWorker()
 
+    public required init() {
+        super.init()
+        self.commonInit()
+    }
+    public required init(nextWorker: PTCLValidation_Protocol) {
+        super.init(nextWorker: nextWorker)
+        self.commonInit()
+    }
+    func commonInit() {
+        self.minimumBirthdateAge = -1
+        self.maximumBirthdateAge = -1
+        
+        self.minimumHandleLength = 6
+        self.maximumHandleLength = 80
+        
+        self.minimumNameLength = 2
+        self.maximumNameLength = 250
+        
+        self.minimumNumberValue = -1
+        self.maximumNumberValue = -1
+        
+        self.minimumPercentageValue = -1
+        self.maximumPercentageValue = -1
+        
+        self.minimumPhoneLength = 10
+        self.maximumPhoneLength = 10
+        
+        self.minimumUnsignedNumberValue = -1
+        self.maximumUnsignedNumberValue = -1
+    }
+
     // MARK: - Business Logic / Single Item CRUD
     override open func doValidateBirthdate(for birthdate: Date) throws -> DNSError? {
         return nil
@@ -84,11 +115,6 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
             return PTCLValidationError
                 .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
-        let regex = WKRCoreValidationWorker.Regex.phone
-        guard phone.dnsCheck(regEx: regex) else {
-            return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
-        }
         guard self.minimumPhoneLength == -1 ||
                 phone.count >= self.minimumPhoneLength else {
             return PTCLValidationError
@@ -98,6 +124,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                 phone.count <= self.maximumPhoneLength else {
             return PTCLValidationError
                 .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+        }
+        let regex = WKRCoreValidationWorker.Regex.phone
+        guard phone.dnsCheck(regEx: regex) else {
+            return PTCLValidationError
+                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
