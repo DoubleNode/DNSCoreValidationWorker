@@ -18,8 +18,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 {
     public enum Regex {
         static let email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        static let phone = "^[0-9]{8}$"
+        static let phone = "^[0-9]{10}$"
     }
+
+    public var emailRegex: String = Regex.email
+    public var phoneRegex: String = Regex.phone
 
     public var passwordStrengthWorker: PTCLPasswordStrength_Protocol = WKRCrashPasswordStrengthWorker()
 
@@ -63,8 +66,7 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
             return PTCLValidationError
                 .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
-        let regex = WKRCoreValidationWorker.Regex.email
-        guard email.dnsCheck(regEx: regex) else {
+        guard email.dnsCheck(regEx: self.emailRegex) else {
             return PTCLValidationError
                 .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
@@ -125,8 +127,7 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
             return PTCLValidationError
                 .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
-        let regex = WKRCoreValidationWorker.Regex.phone
-        guard phone.dnsCheck(regEx: regex) else {
+        guard phone.dnsCheck(regEx: self.phoneRegex) else {
             return PTCLValidationError
                 .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
