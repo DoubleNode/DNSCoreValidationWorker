@@ -23,7 +23,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                            with config: PTCLValidationBirthdateConfig) throws -> DNSError? {
         guard let birthdate = birthdate else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
 //        guard config.minimumAge == nil || number >= config.minimumAge! else {
 //            return PTCLValidationError
@@ -39,7 +40,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                       with config: PTCLValidationDateConfig) throws -> DNSError? {
         guard let date = date else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
 //        guard config.minimum == nil || number >= config.minimum! else {
 //            return PTCLValidationError
@@ -55,15 +57,18 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                        with config: PTCLValidationEmailConfig) throws -> DNSError? {
         guard let email = email else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !email.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || email.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -71,23 +76,28 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                         with config: PTCLValidationHandleConfig) throws -> DNSError? {
         guard let handle = handle else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !handle.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || handle.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || handle.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || handle.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -95,23 +105,28 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                       with config: PTCLValidationNameConfig) throws -> DNSError? {
         guard let name = name else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !name.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || name.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || name.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || name.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -119,7 +134,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                         with config: PTCLValidationNumberConfig) throws -> DNSError? {
         guard let number = number else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
 //        guard config.minimum == nil || number >= config.minimum! else {
 //            return PTCLValidationError
@@ -135,24 +151,29 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                           with config: PTCLValidationPasswordConfig) throws -> DNSError? {
         guard let password = password else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !password.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || password.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || password.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         let strength = try! self.passwordStrengthWorker.doCheckPasswordStrength(for: password)
         guard strength.rawValue >= config.strength.rawValue else {
             return PTCLValidationError
-                .tooWeak(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooWeak(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -160,7 +181,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                             with config: PTCLValidationPercentageConfig) throws -> DNSError? {
         guard let percentage = percentage else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
 //        guard config.minimum == nil || number >= config.minimum! else {
 //            return PTCLValidationError
@@ -176,23 +198,28 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                        with config: PTCLValidationPhoneConfig) throws -> DNSError? {
         guard let phone = phone else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !phone.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || phone.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || phone.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || phone.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -200,23 +227,28 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                         with config: PTCLValidationSearchConfig) throws -> DNSError? {
         guard let search = search else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !search.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || search.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || search.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || search.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -224,23 +256,28 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                        with config: PTCLValidationStateConfig) throws -> DNSError? {
         guard let state = state else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard !config.required || !state.isEmpty else {
             return PTCLValidationError
-                .required(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .required(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.minimumLength == nil || state.count >= config.minimumLength! else {
             return PTCLValidationError
-                .tooShort(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooShort(fieldName: config.fieldName,
+                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.maximumLength == nil || state.count <= config.maximumLength! else {
             return PTCLValidationError
-                .tooLong(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .tooLong(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         guard config.regex == nil || state.dnsCheck(regEx: config.regex!) else {
             return PTCLValidationError
-                .invalid(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .invalid(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
         return nil
     }
@@ -248,7 +285,8 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
                                                 with config: PTCLValidationUnsignedNumberConfig) throws -> DNSError? {
         guard let number = number else {
             return PTCLValidationError
-                .noValue(DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
+                .noValue(fieldName: config.fieldName,
+                         DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
         }
 //        guard config.minimum == nil || number >= config.minimum! else {
 //            return PTCLValidationError
