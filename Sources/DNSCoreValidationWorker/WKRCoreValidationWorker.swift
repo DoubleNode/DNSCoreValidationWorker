@@ -19,9 +19,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
     public var passwordStrengthWorker: PTCLPasswordStrength_Protocol = WKRCrashPasswordStrengthWorker()
 
     // MARK: - Business Logic / Single Item CRUD
-    override open func doValidateBirthdate(for birthdate: Date?,
-                                           with config: PTCLValidationBirthdateConfig) throws -> DNSError? {
-        guard let birthdate = birthdate else {
+    override open func intDoValidateBirthdate(for birthdate: Date?,
+                                              with config: PTCLValidationBirthdateConfig,
+                                              then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
+        guard let _/*birthdate*/ = birthdate else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
@@ -36,9 +38,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 //        }
         return nil
     }
-    override open func doValidateDate(for date: Date?,
-                                      with config: PTCLValidationDateConfig) throws -> DNSError? {
-        guard let date = date else {
+    override open func intDoValidateDate(for date: Date?,
+                                         with config: PTCLValidationDateConfig,
+                                         then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
+        guard let _/*date*/ = date else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
@@ -53,8 +57,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 //        }
         return nil
     }
-    override open func doValidateEmail(for email: String?,
-                                       with config: PTCLValidationEmailConfig) throws -> DNSError? {
+    override open func intDoValidateEmail(for email: String?,
+                                          with config: PTCLValidationEmailConfig,
+                                          then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let email = email else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -72,8 +78,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateHandle(for handle: String?,
-                                        with config: PTCLValidationHandleConfig) throws -> DNSError? {
+    override open func intDoValidateHandle(for handle: String?,
+                                           with config: PTCLValidationHandleConfig,
+                                           then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let handle = handle else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -101,8 +109,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateName(for name: String?,
-                                      with config: PTCLValidationNameConfig) throws -> DNSError? {
+    override open func intDoValidateName(for name: String?,
+                                         with config: PTCLValidationNameConfig,
+                                         then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let name = name else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -130,9 +140,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateNumber(for number: String?,
-                                        with config: PTCLValidationNumberConfig) throws -> DNSError? {
-        guard let number = number else {
+    override open func intDoValidateNumber(for number: String?,
+                                           with config: PTCLValidationNumberConfig,
+                                           then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
+        guard let _/*number*/ = number else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
@@ -147,8 +159,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 //        }
         return nil
     }
-    override open func doValidatePassword(for password: String?,
-                                          with config: PTCLValidationPasswordConfig) throws -> DNSError? {
+    override open func intDoValidatePassword(for password: String?,
+                                             with config: PTCLValidationPasswordConfig,
+                                             then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let password = password else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -177,9 +191,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidatePercentage(for percentage: String?,
-                                            with config: PTCLValidationPercentageConfig) throws -> DNSError? {
-        guard let percentage = percentage else {
+    override open func intDoValidatePercentage(for percentage: String?,
+                                               with config: PTCLValidationPercentageConfig,
+                                               then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
+        guard let _/*percentage*/ = percentage else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
@@ -194,8 +210,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
 //        }
         return nil
     }
-    override open func doValidatePhone(for phone: String?,
-                                       with config: PTCLValidationPhoneConfig) throws -> DNSError? {
+    override open func intDoValidatePhone(for phone: String?,
+                                          with config: PTCLValidationPhoneConfig,
+                                          then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let phone = phone else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -223,8 +241,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateSearch(for search: String?,
-                                        with config: PTCLValidationSearchConfig) throws -> DNSError? {
+    override open func intDoValidateSearch(for search: String?,
+                                           with config: PTCLValidationSearchConfig,
+                                           then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let search = search else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -252,8 +272,10 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateState(for state: String?,
-                                       with config: PTCLValidationStateConfig) throws -> DNSError? {
+    override open func intDoValidateState(for state: String?,
+                                          with config: PTCLValidationStateConfig,
+                                          then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
         guard let state = state else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
@@ -281,9 +303,11 @@ open class WKRCoreValidationWorker: WKRBlankValidationWorker
         }
         return nil
     }
-    override open func doValidateUnsignedNumber(for number: String?,
-                                                with config: PTCLValidationUnsignedNumberConfig) throws -> DNSError? {
-        guard let number = number else {
+    override open func intDoValidateUnsignedNumber(for number: String?,
+                                                   with config: PTCLValidationUnsignedNumberConfig,
+                                                   then resultBlock: PTCLResultBlock?) throws -> DNSError? {
+        _ = resultBlock?(.completed)
+        guard let _/*number*/ = number else {
             return PTCLValidationError
                 .noValue(fieldName: config.fieldName,
                          DNSCoreValidationWorkerCodeLocation(self, "\(#file),\(#line),\(#function)"))
