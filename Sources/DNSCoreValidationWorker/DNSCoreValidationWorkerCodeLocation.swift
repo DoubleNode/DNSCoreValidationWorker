@@ -8,6 +8,9 @@
 
 import DNSError
 
+public extension DNSCodeLocation {
+    typealias validationWorker = DNSCoreValidationWorkerCodeLocation
+}
 open class DNSCoreValidationWorkerCodeLocation: DNSCodeLocation {
     override open class var domainPreface: String { "com.doublenode.coreValidationWorker." }
 }
